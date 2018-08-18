@@ -24,7 +24,8 @@ def main():
     """
     Compute the sentiment of each tweet based on the sentiment scores of the terms in the tweet.
     The sentiment of a tweet is equivalent to the sum of the sentiment scores for each term in the tweet.
-    Run: $ python2.7 tweet_sentiment.py AFINN-111.txt output.txt
+
+    > Run: $ python2.7 tweet_sentiment.py AFINN-111.txt output.txt
     """
     sentiment_file = sys.argv[1]
     tweet_file = sys.argv[2]

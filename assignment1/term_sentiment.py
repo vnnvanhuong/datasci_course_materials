@@ -36,6 +36,8 @@ def main():
     Computes the sentiment for the terms that do not appear in the file AFINN-111.txt.
     For example, if the word soccer always appears in proximity with positive words like great and fun,
     then we can deduce that the term soccer itself carries a positive sentiment.
+
+    > Run: $ python2.7 term_sentiment.py AFINN-111.txt output.txt
     """
     sentiment_file = sys.argv[1]
     tweet_file = sys.argv[2]
