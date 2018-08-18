@@ -21,6 +21,11 @@ def load_tweet(filename):
 
 
 def main():
+    """
+    Compute the sentiment of each tweet based on the sentiment scores of the terms in the tweet.
+    The sentiment of a tweet is equivalent to the sum of the sentiment scores for each term in the tweet.
+    Run: $ python2.7 tweet_sentiment.py AFINN-111.txt output.txt
+    """
     sentiment_file = sys.argv[1]
     tweet_file = sys.argv[2]
 
@@ -28,15 +33,17 @@ def main():
     tweet_list = load_tweet(tweet_file)
     terms = [x[0] for x in sentiment_dict]
 
+    term = 0
+    score = 1
+
     for tweet in tweet_list:
-        encoded_tweet = tweet["text"]
-        words = encoded_tweet.split()
-        scores = set(words).intersection(terms)
-        if len(scores) == 0:
+        tweet_words = tweet["text"].split()
+        found_terms = set(tweet_words).intersection(terms)
+        if len(found_terms) == 0:
             print 0
         else:
-            total = [x[1] for x in sentiment_dict if x[0] in scores]
-            print sum(total)
+            tweet_scores = [x[score] for x in sentiment_dict if x[term] in found_terms]
+            print sum(tweet_scores)
 
 
 if __name__ == '__main__':
